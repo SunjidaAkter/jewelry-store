@@ -1,7 +1,9 @@
 import React from 'react';
 import Banner from '../Components/Home/Banner';
 import Clients from '../Components/Home/Clients';
+import Reviews from '../Components/Home/Reviews';
 import ShopProducts from '../Components/Home/ShopProducts';
+import TopCollection from '../Components/Home/TopCollection';
 import Navbar from '../Components/Shared/Navbar';
 
 const Home = () => {
@@ -9,6 +11,8 @@ const Home = () => {
         <div>
             <Banner />
             <ShopProducts />
+            <TopCollection />
+            <Reviews />
             <Clients />
         </div>
     );

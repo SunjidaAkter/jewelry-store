@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from 'swiper'
 
 import StarRatings from "react-star-ratings";
+import { Link } from 'react-router-dom';
 
 
 const collection = [
@@ -80,7 +81,7 @@ const TopCollection = () => {
                         collection.map(p =>
                             <SwiperSlide className=''>
                                 <div class=" rounded-none bg-base-100  responsive_swiper">
-                                    <figure><img src={p.image} width='100%' alt="Shoes" /></figure>
+                                    <Link to="/detailing"><img src={p.image} width='100%' alt="Shoes" /></Link>
                                     <div class="card-body">
                                         <h2 class="text-center">
                                             {p.Mname}

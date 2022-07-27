@@ -6,42 +6,18 @@ import "swiper/css/scrollbar";
 import { Scrollbar, Autoplay } from "swiper";
 import StarRatings from "react-star-ratings";
 import '../../Pages/Home.css'
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+import { useDispatch, useSelector } from "react-redux";
 
-const reviews = [
-    {
-        img: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/files/tesm-2_373bef82-176b-4e10-b221-87c2d6d3f8c5.jpg?v=1652412428',
-        des: 'Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep...',
-        name: 'sara colinton',
-        title: '“Stunning Design”',
-        rating: 4
-    },
-    {
-        img: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/files/tesm-1_31477302-a9a6-48b4-951c-f5a495082f79.jpg?v=1652412423',
-        des: 'Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep...',
-        name: 'sara colinton',
-        title: '“Stunning Design”',
-        rating: 5
-    },
-    {
-        img: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/files/tes-4.jpg?v=1646898224',
-        des: 'Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep...',
-        name: 'sara colinton',
-        title: '“Stunning Design”',
-        rating: 4.5
-    },
-    {
-        img: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/files/tesm-3_5833bf40-f2bf-48cb-ac64-2f9249132983.jpg?v=1652412434',
-        des: 'Blood bank canine teeth larynx occupational therapist oncologist optician plaque spinal tap stat strep...',
-        name: 'sara colinton',
-        title: '“Stunning Design”',
-        rating: 4
-    }
 
-]
+
 
 
 
 const Reviews = () => {
+    const reviews = useSelector((state) => state.reviewsReducer.reviews);
+
     return (
         <div className='bg-[#f8f8f8] p-12 my-6'>
             <div class="flex w-full py-10 px-12">
@@ -73,7 +49,7 @@ const Reviews = () => {
                     className="mySwiper"
                 >
                     {
-                        reviews.map(review =>
+                        reviews && reviews.map(review =>
                             <SwiperSlide className='dark:bg-[#2b2b2b]'>
                                 <div>
                                     <StarRatings

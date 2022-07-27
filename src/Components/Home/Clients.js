@@ -81,7 +81,7 @@ const Clients = () => {
                     {
                         clientCollection.map(client =>
                             <SwiperSlide className='dark:bg-[#2b2b2b] mb-12'>
-                                <div class="opacity-60 duration-1000 dark:bg-[#2b2b2b] hover:opacity-100  w-[100%] responsive_swiper">
+                                <div class="opacity-50 duration-1000 dark:bg-[#2b2b2b] hover:opacity-100  w-[100%] responsive_swiper">
                                     <><img src={client.img} className="w-[100%] dark:invert " alt="Shoes" /></>
                                 </div>
                             </SwiperSlide>

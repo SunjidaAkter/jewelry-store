@@ -3,9 +3,17 @@ import { faMailBulk, faPhone, faHeart, faUser, faBars, faX, faAngleLeft, faToggl
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import '../../Pages/Home.css'
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+
+    const handleSignOut = () => {
+        signOut(auth);
+    }
     return (
         <div>
             <div className='bg-[#F8F8F8] dark:bg-[#232323]'>
@@ -24,7 +32,7 @@ const Navbar = () => {
                             <label tabindex="0" class=""><p className='group-hover:text-primary text-[#999999] dark:text-[#cfd4da]'><FontAwesomeIcon icon={faUser} className='group-hover:text-primary text-primary'></FontAwesomeIcon> My Account</p></label>
                             <ul tabindex="0" class="dropdown-content menu dark:text-[#cfd4da] dark:bg-[#2b2b2b]   bg-base-100 w-52">
                                 <div className='dark:text-[#cfd4da] dark:bg-[#232323] bg-[#f8f8f8] h-[15px]'></div>
-                                <p className='dark:text-[#cfd4da] dark:bg-[#2b2b2b] hover:bg-white text-left p-2 shadow ml-3 text-zinc-600'><Link to="/login">Login</Link><br /><Link to="/register">Register</Link><br /><a>Logout</a></p>
+                                <p className='dark:text-[#cfd4da] dark:bg-[#2b2b2b] hover:bg-white text-left p-2 shadow ml-3 text-zinc-600'><Link to="/login">Login</Link><br /><Link to="/register">Register</Link><br />{user ? <p className='btn btn-ghost p-0 m-0' onClick={handleSignOut}>Logout</p> : <p className='text-[1px] p-0 m-0'></p>}</p>
                             </ul>
                         </div>
                     </div>
@@ -44,7 +52,7 @@ const Navbar = () => {
                                     Parent
                                     <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                                 </a>
-                                <ul class="p-2">
+                                <ul class="p-2  z-50 bg-white">
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
                                 </ul>
@@ -102,7 +110,7 @@ const Navbar = () => {
                                 HOME
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </Link>
-                            <ul class="p-2">
+                            <ul class="p-2  z-50 bg-white">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
@@ -112,17 +120,17 @@ const Navbar = () => {
                                 SHOP
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </a>
-                            <ul class="p-2">
+                            <ul class="p-2  z-50 bg-white">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
                         </li>
                         <li tabindex="0">
-                            <a className='lato text-[16px] font-[500] hover:text-primary'>
+                            <Link to='/dashboard' className='lato text-[16px] font-[500] hover:text-primary'>
                                 DASHBOARD
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                            </a>
-                            <ul class="p-2">
+                            </Link>
+                            <ul class="p-2  z-50 bg-white">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
@@ -132,7 +140,7 @@ const Navbar = () => {
                                 BLOG
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </a>
-                            <ul class="p-2">
+                            <ul class="p-2  z-50 bg-white">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>
@@ -142,7 +150,7 @@ const Navbar = () => {
                                 PAGE
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </a>
-                            <ul class="p-2">
+                            <ul class="p-2  z-50 bg-white">
                                 <li><a>Submenu 1</a></li>
                                 <li><a>Submenu 2</a></li>
                             </ul>

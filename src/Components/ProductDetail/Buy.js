@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment } from "../../features/Counter/CounterSlice";
 import StarRatings from "react-star-ratings";
+import { faMailBulk, faPhone, faHeart, faUser, faBars, faX, faAngleLeft, faToggleOff, faToggleOn, faLightbulb, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Buy = () => {
     const count = useSelector((state) => state.counter.count);
@@ -32,11 +35,11 @@ const Buy = () => {
                         <div className='flex justify-between items-center'>
                             <div className='flex justify-center items-center border-[2px] border-[#868686] bg-white w-[129px]'>
                                 <button onClick={() => { dispatch(increment()); }} className='bg-white text-[#868686] text-[24px] font-[700] py-1 pr-3'>+</button>
-                                <input type="text" className='border-none w-[50px] text-[24px] font-[500] px-3 focus-within:border-none' min={0} value={count} />
+                                <input type="number" className='border-none w-[50px] text-[24px] font-[500] px-3 focus-within:border-none' min={0} value={count} />
                                 <button onClick={() => { dispatch(decrement()); }} className='bg-white text-[#868686] text-[24px] font-[700] py-1 pr-3'>-</button>
                             </div>
                             <div><button className='bg-[rgba(0,0,0,.75)] uppercase lg:px-20 md:px-5 px-5 py-3 text-white hover:bg-primary'>Add to cart</button></div>
-                            <div><button className='border-[2px] border-[#868686] px-10 py-3'>L</button></div>
+                            <div><button className='border-[2px] border-[#868686] px-10 py-2'><FontAwesomeIcon icon={faHeart} className='hover:text-primary text-[rgba(0,0,0,.75)] text-[1.5rem] font-[300]' /></button></div>
                         </div>
                         <div>
                             <button className='uppercase text-white w-full py-3 bg-primary hover:bg-black my-7'>buy it now</button>

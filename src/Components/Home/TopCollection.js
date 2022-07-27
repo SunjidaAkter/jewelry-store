@@ -1,49 +1,16 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { Pagination } from 'swiper'
-
+import { useDispatch, useSelector } from "react-redux";
 import StarRatings from "react-star-ratings";
 import { Link } from 'react-router-dom';
+// import collectionsReducer from '../../features/Collections/collectionsSlice'
 
-
-const collection = [
-    {
-        image: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/products/2_b3590f88-23ef-4bec-a3a2-98ddd5ecbaee_600x.jpg?v=1652417683',
-        rating: 3,
-        Mname: 'dafasfa',
-        price: "300"
-    },
-    {
-        image: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/products/11_600x.jpg?v=1647501821',
-        rating: 3,
-        Mname: 'dafasfa',
-        price: "300"
-    },
-    {
-        image: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/products/12_600x.jpg?v=1647501858',
-        rating: 1,
-        Mname: 'dafasfa',
-        price: "300"
-    },
-    {
-        image: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/products/18_600x.jpg?v=1647502026',
-        rating: 4,
-        Mname: 'dafasfssssa',
-        price: "200"
-    },
-    {
-        image: 'https://cdn.shopify.com/s/files/1/0013/2661/2531/products/7_600x.jpg?v=1647501463',
-        rating: 3,
-        Mname: 'dafasfa',
-        price: "300"
-    },
-
-]
 
 
 const TopCollection = () => {
-
+    const collections = useSelector((state) => state.collectionsReducer.collections);
+    // const dispatch = useDispatch();
 
     return (
         <div>
@@ -78,7 +45,7 @@ const TopCollection = () => {
                     className="mySwiper"
                 >
                     {
-                        collection.map(p =>
+                        collections && collections.map(p =>
                             <SwiperSlide className=''>
                                 <div class=" rounded-none bg-base-100  responsive_swiper">
                                     <Link to="/detailing"><img src={p.image} width='100%' alt="Shoes" /></Link>

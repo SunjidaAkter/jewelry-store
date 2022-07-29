@@ -20,6 +20,7 @@ const Reviews = () => {
 
     return (
         <div className='bg-[#f8f8f8] p-12 my-6'>
+            <h1 className=' text-5xl font-bold py-4'>TESTIMONIALS</h1>
             <div class="flex w-full py-10 px-12">
                 <Swiper
 

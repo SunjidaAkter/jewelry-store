@@ -49,11 +49,14 @@ export const reviewsSlice = createSlice({
             state.reviews.push(action.payload);
         },
         updateReview: (state, action) => {
-            const { id, title, author } = action.payload;
+            const { id, name, title, rating, des, img } = action.payload;
             const isReviewExist = state.reviews.filter((review) => review.id === id);
             if (isReviewExist) {
                 isReviewExist[0].title = title;
-                isReviewExist[0].author = author;
+                isReviewExist[0].name = name;
+                isReviewExist[0].img = img;
+                isReviewExist[0].rating = rating;
+                isReviewExist[0].des = des;
             }
         },
         deleteReview: (state, action) => {

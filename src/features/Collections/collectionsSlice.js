@@ -96,6 +96,10 @@ export const collectionsSlice = createSlice({
             const id = action.payload;
             state.collections = state.collections.filter((collection) => collection.id !== id);
         },
+        seleteCollection: (state, action) => {
+            const id = action.payload;
+            state.collections = state.collections.filter((collection) => collection.id == id);
+        },
     },
 });
 

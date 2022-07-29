@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import StarRating from "../../Components/Dashboard/StarRating";
 import { v4 as uuidv4 } from "uuid";
 import { addReview } from '../../features/Reviews/ReviewsSlice';
+import "../Home.css"
 
 
 const AddReview = () => {
@@ -27,13 +28,13 @@ const AddReview = () => {
             <div className='flex w-3/4 h-screen justify-center items-center'>
                 <div className="card w-full bg-base-100 shadow-2xl">
                     <div className="card-body">
-                        <h2 className="text-center text-2xl font-bold">Give Your Review</h2>
+                        <h2 className="text-center text-2xl font-extrabold lato text-primary">Give Your Review</h2>
                         <form onSubmit={handleSubmit} >
                             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
                                 <div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="text-neutral label-text">Name</span>
+                                            <span className="text-[#868686] label-text lato font-[700]">Name</span>
                                         </label>
                                         <input
                                             type="text"
@@ -50,7 +51,7 @@ const AddReview = () => {
 
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="text-neutral label-text">Title</span>
+                                            <span className="text-[#868686] label-text lato font-[700]">Title</span>
                                         </label>
                                         <input
                                             type="text"
@@ -66,7 +67,7 @@ const AddReview = () => {
                                     </div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="text-neutral label-text">Image URL</span>
+                                            <span className="text-[#868686] label-text lato font-[700]">Image URL</span>
                                         </label>
                                         <input
                                             type="text"
@@ -85,7 +86,7 @@ const AddReview = () => {
                                 <div>
                                     <div className="form-control w-full max-w-xs">
                                         <label className="label">
-                                            <span className="text-neutral label-text">How much stars do you want to give for service</span>
+                                            <span className="text-[#868686] label-text lato font-[700]">How much stars do you want to give for service</span>
                                         </label>
                                         <StarRating
                                             rating={rating}
@@ -93,9 +94,9 @@ const AddReview = () => {
                                         ></StarRating>
                                     </div>
 
-                                    <div className="form-control w-full max-w-xs ">
+                                    <div className="form-control w-full mt-2 max-w-xs ">
                                         <label className="label">
-                                            <span className="text-neutral label-text">Give your review</span>
+                                            <span className="text-[#868686] label-text lato font-[700]">Give your review</span>
                                         </label>
                                         <textarea
                                             type="text"
@@ -115,7 +116,7 @@ const AddReview = () => {
                             </div>
 
                             <div className='flex w-full justify-center my-6'>
-                                <input className='btn bg-primary w-full max-w-xs text-white block' type="submit" value="Add Review" />
+                                <input className='btn bg-primary w-full border-none max-w-xs text-white block' type="submit" value="Add Review" />
                             </div>
                         </form>
 

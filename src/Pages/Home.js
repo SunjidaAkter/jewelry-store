@@ -4,12 +4,12 @@ import Clients from '../Components/Home/Clients';
 import Reviews from '../Components/Home/Reviews';
 import ShopProducts from '../Components/Home/ShopProducts';
 import TopCollection from '../Components/Home/TopCollection';
-import Buy from '../Components/ProductDetail/Buy';
-import Navbar from '../Components/Shared/Navbar';
+// import PostsList from '../features/PostsList'
 
 const Home = () => {
     return (
         <div>
+
             <Banner />
             <ShopProducts />
             <TopCollection />

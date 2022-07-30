@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 const Navbar = () => {
-    const price = useSelector((state) => state.counter.count);
+    const price = useSelector((state) => state.counter.price);
     const count = useSelector((state) => state.counter.count);
     const [user] = useAuthState(auth);
     const [open, setOpen] = useState(false);
@@ -57,7 +57,7 @@ const Navbar = () => {
                                             <img className='w-[30%]' src={p.img} alt="" />
                                             <div className='w-[70%]'>
                                                 <p className='lato font-[600] text-[24px] text-left ml-2 hover:text-primary'>{p.name}</p>
-                                                <p className='text-[20px] font-[500] text-left ml-2 hover:text-primary'>${price}</p>
+                                                <p className='text-[20px] font-[500] text-left ml-2 hover:text-primary'>$60.00</p>
 
                                             </div>
                                         </div>

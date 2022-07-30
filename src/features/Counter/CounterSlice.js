@@ -9,19 +9,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const counterSlice = createSlice({
     name: "counter",
-    initialState: { count: 0 },
+    initialState: { count: 0, price: 0.00 },
     reducers: {
         increment: (state) => {
+            state.price = state.price + 60.00;
             state.count = state.count + 1;
         },
         decrement: (state) => {
             state.count = state.count - 1;
+            state.price = state.price - 60.00;
         },
         reset: (state) => {
             state.count = 0;
+            state.price = 0.00;
         },
         reset2: (state) => {
-            state.count = 50;
+            state.count = 5;
+            state.price = 300.00;
         }
     },
 });

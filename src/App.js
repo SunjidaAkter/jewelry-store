@@ -16,6 +16,7 @@ import Orders from './Pages/Dashboard/Orders';
 import AddReview from './Pages/Dashboard/AddReview';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import PostsList from './features/PostsList';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
       </Routes>
       <Footer />
       <ToastContainer></ToastContainer>
+      {/* <PostsList /> */}
     </div>
   );
 }

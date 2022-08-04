@@ -9,6 +9,9 @@ import { addCart } from "../../features/CartAdd/CartAddSlice";
 import { addWishlist } from "../../features/wishlist/wishlistSlice";
 import { addOrder } from "../../features/Orders/OrdersSlice";
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import { selectProductById } from '../../features/Products/productsSlice'
+import { getProductsStatus } from "../../features/Products/productsSlice";
 
 
 const Buy = () => {
@@ -16,6 +19,20 @@ const Buy = () => {
     const price = useSelector((state) => state.counter.price);
     // const price = useSelector((state) => state.price.price);
     const dispatch = useDispatch();
+    const { productId } = useParams()
+
+    const product = useSelector((state) => selectProductById(state, productId))
+    const productStatus = useSelector(getProductsStatus);
+    if (productStatus === 'loading') {
+        return <p>"Loading..."</p>;
+    }
+    if (!product) {
+        return (
+            <section>
+                <h2>Product not found!</h2>
+            </section>
+        )
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         const carts = { id: uuidv4(), img: "https://cdn.shopify.com/s/files/1/0013/2661/2531/products/11_600x.jpg?v=1647501821", name: "Twin Hoops", price: "60" };
@@ -51,7 +68,7 @@ const Buy = () => {
     };
     const handleIncrement = () => {
 
-        if (count < 50 && count >= 0) {
+        if (count < 5 && count >= 0) {
 
             dispatch(increment());
         }
@@ -67,7 +84,7 @@ const Buy = () => {
             <div class="hero min-h-screen bg-white">
                 <div class="hero-content flex-col lg:flex-row">
                     <div className='lg:w-1/2 w-full'>
-                        <img src="https://cdn.shopify.com/s/files/1/0013/2661/2531/products/11_600x.jpg?v=1647501821" class="w-full rounded-lg shadow-2xl" />
+                        <img src={product.image} class="w-full rounded-lg shadow-2xl" />
 
                     </div>
                     <div className='lg:w-1/2  w-full lg:ml-10 ml-0 text-left'>
@@ -78,7 +95,7 @@ const Buy = () => {
                             numberOfStars={5}
                             name='rating'
                         />
-                        <h1 class="text-3xl font-[500]">Twin Hoops</h1>
+                        <h1 class="text-3xl font-[500]">{product.Mname}</h1>
                         <p className='text-primary text-[28px] font-[400] pt-2'> <span className='text-[#868686]'><del>$100.00</del></span>  $60.00</p>
                         <p class="pt-10 pb-5 text-[#868686] text-[14px]">Nulla facilisi. Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. non, velit. Etiam rhoncus. Nunc interdum lacus sit amet orci
                         </p>

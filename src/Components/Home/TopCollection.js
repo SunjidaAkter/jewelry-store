@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 
 
-const TopCollection = () => {
-    const collections = useSelector((state) => state.collectionsReducer.collections);
+const TopCollection = ({ products }) => {
+    // const collections = useSelector((state) => state.collectionsReducer.collections);
     // const dispatch = useDispatch();
 
     return (
@@ -45,7 +45,7 @@ const TopCollection = () => {
                     className="mySwiper"
                 >
                     {
-                        collections && collections.map(p =>
+                        products && products.map(p =>
                             <SwiperSlide className=''>
                                 <div class=" rounded-none bg-base-100  responsive_swiper">
                                     <Link to={`/detailing/${p.id}`}><img src={p.image} width='100%' alt="Shoes" /></Link>
@@ -58,7 +58,7 @@ const TopCollection = () => {
 
 
                                         <StarRatings
-                                            rating={p.rating}
+                                            rating={parseInt(p.rating)}
                                             starRatedColor="#edc128"
                                             starDimension='20px'
                                             numberOfStars={5}

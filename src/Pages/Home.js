@@ -3,7 +3,7 @@ import Banner from '../Components/Home/Banner';
 import Clients from '../Components/Home/Clients';
 import Reviews from '../Components/Home/Reviews';
 import ShopProducts from '../Components/Home/ShopProducts';
-import TopCollection from '../Components/Home/TopCollection';
+import TopCollections from '../Components/Home/TopCollections';
 // import PostsList from '../features/PostsList'
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
 
             <Banner />
             <ShopProducts />
-            <TopCollection />
+            <TopCollections />
             <Reviews />
             <Clients />
         </div>

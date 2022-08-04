@@ -6,6 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import { fetchProducts } from './features/Products/productsSlice';
+
+
+store.dispatch(fetchProducts());
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

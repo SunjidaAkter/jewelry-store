@@ -22,7 +22,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const wishlists = useSelector((state) => state.wishlistReducer.wishlist);
     const carts = useSelector((state) => state.cartsReducer.carts);
-    console.log(carts)
+
     return (
         <div>
             <div className='bg-[#F8F8F8] dark:bg-[#232323]'>
@@ -62,7 +62,6 @@ const Navbar = () => {
                                             </div>
                                         </div>
                                     </div>)}
-
                                 </ul>
                             </div>
                         </div>}
@@ -159,11 +158,11 @@ const Navbar = () => {
                                 DASHBOARD
                                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </Link>
-                            <ul class="p-2  z-50 bg-white">
-                                <Link to='/dashboard' className='text-left my-1'><a>B. Summary</a></Link>
-                                <Link to="/dashboard/profile" className='text-left my-1'><a>Profil</a></Link>
-                                <Link to="/dashboard/review" className='text-left my-1'><a>Add Review</a></Link>
-                                <Link to="/dashboard/orders" className='text-left my-1'><a>Orders</a></Link>
+                            <ul class="py-2 px-4 z-50 bg-white ">
+                                <Link to='/dashboard' className='text-left my-1 hover:text-primary hover:bg-base-200 px-3 py-2 rounded-md'><a>B. Summary</a></Link>
+                                <Link to="/dashboard/profile" className='text-left my-1 hover:text-primary hover:bg-base-200 px-3 py-2 rounded-md'><a>Profil</a></Link>
+                                <Link to="/dashboard/review" className='text-left my-1 hover:text-primary hover:bg-base-200 px-3 py-2 rounded-md'><a>Add Review</a></Link>
+                                <Link to="/dashboard/orders" className='text-left my-1 hover:text-primary hover:bg-base-200 px-3 py-2 rounded-md'><a>Orders</a></Link>
                             </ul>
                         </li>
                         <li tabindex="0">

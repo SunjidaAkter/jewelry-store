@@ -15,6 +15,7 @@ export default class SimpleSlider extends Component {
             slidesToScroll: 1,
             cssEase: "linear",
             pauseOnHover: false
+
         };
         return (
             <div>

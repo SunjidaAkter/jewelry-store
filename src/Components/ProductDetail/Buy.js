@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset, reset2 } from "../../features/Counter/CounterSlice";
 import StarRatings from "react-star-ratings";
@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { selectProductById } from '../../features/Products/productsSlice'
 import { getProductsStatus } from "../../features/Products/productsSlice";
+import { addNewOrder } from "../../features/Order/ordersSlice";
 
 
 const Buy = () => {
@@ -33,6 +34,16 @@ const Buy = () => {
             </section>
         )
     }
+
+    const [_id, setId] = useState(product._id)
+    const [counts, setCounts] = useState(count)
+    const [img, setImg] = useState(product.image)
+    const [name, setName] = useState(product.Mname)
+    const [prices, setPrices] = useState(product?.price)
+    const [addRequestStatus, setAddRequestStatus] = useState('idle')
+    const canSave = [counts, img, name, prices].every(Boolean) && addRequestStatus === 'idle';
+    console.log(_id, counts, img, name, prices)
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const carts = { id: uuidv4(), img: "https://cdn.shopify.com/s/files/1/0013/2661/2531/products/11_600x.jpg?v=1647501821", name: "Twin Hoops", price: "60" };
@@ -47,16 +58,34 @@ const Buy = () => {
         toast.success("The product has been added to wish list successfully!");
 
     };
-    const handleSubmit3 = (e) => {
-        e.preventDefault();
-        const orders = { id: uuidv4(), img: "https://cdn.shopify.com/s/files/1/0013/2661/2531/products/11_600x.jpg?v=1647501821", name: "Twin Hoops", price: "60" };
-        dispatch(addOrder(orders));
-        toast.success("The product has been added successfully!");
 
-    };
+    const onSaveOrderClicked = (e) => {
+        e.preventDefault();
+        console.log(e)
+        if (canSave) {
+            console.log(name)
+            try {
+                setAddRequestStatus('pending')
+                dispatch(addNewOrder({ _id, counts, img, name, prices })).unwrap()
+
+
+                toast.success("The product has been added to order list successfully!");
+
+            } catch (err) {
+                console.error('Failed to save the post', err)
+            } finally {
+                setAddRequestStatus('idle')
+            }
+        }
+
+    }
+
+    const onCountsChanged = e => setCounts(e.target.value)
+
+
     const handleDecrement = () => {
 
-        if (count <= 0) {
+        if (count <= 1) {
 
             dispatch(reset());
             toast.error("You can not buy less than 0");
@@ -68,7 +97,7 @@ const Buy = () => {
     };
     const handleIncrement = () => {
 
-        if (count < 5 && count >= 0) {
+        if (count < 5 && count >= 1) {
 
             dispatch(increment());
         }
@@ -81,7 +110,7 @@ const Buy = () => {
 
     return (
         <div className='lg:px-10 px-10'>
-            <div class="hero min-h-screen bg-white">
+            {product ? <div class="hero min-h-screen bg-white">
                 <div class="hero-content flex-col lg:flex-row">
                     <div className='lg:w-1/2 w-full'>
                         <img src={product.image} class="w-full rounded-lg shadow-2xl" />
@@ -103,18 +132,18 @@ const Buy = () => {
                         <div className='flex justify-between items-center'>
                             <div className='flex justify-center items-center border-[2px] border-[#868686] bg-white w-[129px]'>
                                 <button onClick={handleIncrement} className='bg-white text-[#868686] text-[24px] font-[700] py-1 pr-3'>+</button>
-                                <input type="text" className='border-none w-[50px] text-[24px] font-[500] px-3 focus-within:border-none' min={0} value={count} />
+                                <input type="text" className='border-none w-[50px] text-[24px] font-[500] px-3 focus-within:border-none' onChange={onCountsChanged} value={count} />
                                 <button onClick={handleDecrement} className='bg-white text-[#868686] text-[24px] font-[700] py-1 pr-3'>-</button>
                             </div>
                             <div><button className='bg-[rgba(0,0,0,.75)] uppercase lg:px-20 md:px-5 px-5 py-3 text-white hover:bg-primary' onClick={handleSubmit}>Add to cart</button></div>
                             <div className='group'><button onClick={handleSubmit2} className='group-hover:text-primary border-[2px] border-[#868686] px-10 py-2'><FontAwesomeIcon icon={faHeart} className='group-hover:text-primary text-[rgba(0,0,0,.75)] text-[1.5rem] font-[300]' /></button></div>
                         </div>
                         <div>
-                            <button onClick={handleSubmit3} className='uppercase text-white w-full py-3 bg-primary hover:bg-black my-7'>buy it now</button>
+                            <button onClick={onSaveOrderClicked} className='uppercase text-white w-full py-3 bg-primary hover:bg-black my-7'>buy it now</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <p>Loading... </p>}
         </div>
     );
 };

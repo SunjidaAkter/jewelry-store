@@ -55,7 +55,7 @@ const TopCollections = () => {
                             products && products.map(p =>
                                 <SwiperSlide className=''>
                                     <div class=" rounded-none bg-base-100  responsive_swiper">
-                                        <Link to={`/products/${p._id}`}><img src={p.image} width='100%' alt="Shoes" /></Link>
+                                        <Link to={`/products/${p._id}`}><img src={p.img01} width='100%' alt="Shoes" /></Link>
                                         <div class="card-body">
                                             <h2 class="text-center">
                                                 {p.Mname}

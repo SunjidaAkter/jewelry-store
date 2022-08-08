@@ -13,6 +13,11 @@ import { useParams } from 'react-router-dom';
 import { selectProductById } from '../../features/Products/productsSlice'
 import { getProductsStatus } from "../../features/Products/productsSlice";
 import { addNewOrder } from "../../features/Order/ordersSlice";
+import Slider from "react-slick";
+// import { baseUrl } from "./config";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 
 const Buy = () => {
@@ -107,13 +112,45 @@ const Buy = () => {
 
         }
     };
+    const settings = {
+        customPaging: function (i) {
+            return (
+                <a>
+                    {/* <img src={`product.img0${i + 1}`} /> */}
+                    {/* <img className='w-6 h-6' src={`product.img0${i}`} alt="" /> */}
+                    <img className=' w-40 rounded-full' src={product.img01} alt="" />
+                </a>
+            );
+        },
+        dots: true,
+        dotsClass: "slick-dots slick-thumb",
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
 
     return (
         <div className='lg:px-10 px-10'>
             {product ? <div class="hero min-h-screen bg-white">
                 <div class="hero-content flex-col lg:flex-row">
                     <div className='lg:w-1/2 w-full'>
-                        <img src={product.image} class="w-full rounded-lg shadow-2xl" />
+                        <div className="w-full h-full rounded-lg shadow-2xl">
+                            <Slider {...settings}>
+                                <div>
+                                    <img src={product.img01} alt="" />
+                                </div>
+                                <div>
+                                    <img src={product.img02} alt="" />
+                                </div>
+                                <div>
+                                    <img src={product.img03} alt="" />
+                                </div>
+                                <div>
+                                    <img src={product.img04} alt="" />
+                                </div>
+                            </Slider>
+                        </div>
 
                     </div>
                     <div className='lg:w-1/2  w-full lg:ml-10 ml-0 text-left'>

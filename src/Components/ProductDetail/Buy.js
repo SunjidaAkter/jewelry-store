@@ -87,7 +87,7 @@ const Buy = () => {
 
     const onCountsChanged = e => setCounts(e.target.value)
 
-
+    const data = [product.img01, product.img02, product.img03, product.img03]
     const handleDecrement = () => {
 
         if (count <= 1) {
@@ -114,16 +114,15 @@ const Buy = () => {
     };
     const settings = {
         customPaging: function (i) {
+            console.log(product.img01)
             return (
                 <a>
-                    {/* <img src={`product.img0${i + 1}`} /> */}
-                    {/* <img className='w-6 h-6' src={`product.img0${i}`} alt="" /> */}
-                    <img className=' w-40 rounded-full' src={product.img01} alt="" />
+                    <img className='w-[50px] inline-block' src={data[i]} />
                 </a>
             );
         },
         dots: true,
-        dotsClass: "slick-dots slick-thumb",
+        dotsClass: " ",
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -151,7 +150,6 @@ const Buy = () => {
                                 </div>
                             </Slider>
                         </div>
-
                     </div>
                     <div className='lg:w-1/2  w-full lg:ml-10 ml-0 text-left'>
                         <StarRatings

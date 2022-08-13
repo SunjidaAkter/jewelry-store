@@ -117,12 +117,15 @@ const Buy = () => {
             console.log(product.img01)
             return (
                 <a>
-                    <img className='w-[50px] inline-block' src={data[i]} />
+                    <div className='w-[100px] mt-[100px] z-40'>
+
+                        <img className='w-full rounded-full' src={data[i]} />
+                    </div>
                 </a>
             );
         },
         dots: true,
-        dotsClass: " ",
+        dotsClass: "slick-dots impo",
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -130,23 +133,23 @@ const Buy = () => {
     };
 
     return (
-        <div className='lg:px-10 px-10'>
+        <div className='back lg:px-10 px-10'>
             {product ? <div class="hero min-h-screen bg-white">
                 <div class="hero-content flex-col lg:flex-row">
-                    <div className='lg:w-1/2 w-full'>
+                    <div className='lg:w-[450px] lg:h-[450px] w-full'>
                         <div className="w-full h-full rounded-lg shadow-2xl">
                             <Slider {...settings}>
                                 <div>
-                                    <img src={product.img01} alt="" />
+                                    <img className='w-full' src={product.img01} alt="" />
                                 </div>
                                 <div>
-                                    <img src={product.img02} alt="" />
+                                    <img className='w-full' src={product.img02} alt="" />
                                 </div>
                                 <div>
-                                    <img src={product.img03} alt="" />
+                                    <img className='w-full' src={product.img03} alt="" />
                                 </div>
                                 <div>
-                                    <img src={product.img04} alt="" />
+                                    <img className='w-full' src={product.img04} alt="" />
                                 </div>
                             </Slider>
                         </div>
@@ -170,7 +173,7 @@ const Buy = () => {
                                 <input type="text" className='border-none w-[50px] text-[24px] font-[500] px-3 focus-within:border-none' onChange={onCountsChanged} value={count} />
                                 <button onClick={handleDecrement} className='bg-white text-[#868686] text-[24px] font-[700] py-1 pr-3'>-</button>
                             </div>
-                            <div><button className='bg-[rgba(0,0,0,.75)] uppercase lg:px-20 md:px-5 px-5 py-3 text-white hover:bg-primary' onClick={handleSubmit}>Add to cart</button></div>
+                            <div><button className='bg-[rgba(0,0,0,.75)] uppercase lg:px-16 md:px-5 px-5 py-3 text-white hover:bg-primary' onClick={handleSubmit}>Add to cart</button></div>
                             <div className='group'><button onClick={handleSubmit2} className='group-hover:text-primary border-[2px] border-[#868686] px-10 py-2'><FontAwesomeIcon icon={faHeart} className='group-hover:text-primary text-[rgba(0,0,0,.75)] text-[1.5rem] font-[300]' /></button></div>
                         </div>
                         <div>
